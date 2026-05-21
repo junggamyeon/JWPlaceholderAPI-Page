@@ -1,7 +1,6 @@
-# 🌐 JWPlaceholderAPI Web
-
 <div align="center">
-
+# 🌐 JWPlaceholderAPI Web
+    
 ### Official plugin directory for JWPlaceholderAPI
 
 Browse plugins, placeholders, integrations, and developer resources for the Endstone ecosystem.
