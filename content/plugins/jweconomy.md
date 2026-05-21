@@ -8,7 +8,7 @@ description: Modern economy system for EndstoneMC survival servers.
 
 Below is a list of placeholders provided by the JWEconomy expansion:
 
-###bPlaceholder
+### Placeholder
 - `%jweco_balance%`
 - `%jweco_balance_raw%`
 - `%jweco_balance_<currency>%` 
