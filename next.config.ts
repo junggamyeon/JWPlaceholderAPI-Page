@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/plugins/*': ['./content/plugins/**/*'],
   },
-}
+};
+
 export default nextConfig;

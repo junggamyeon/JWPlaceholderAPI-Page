@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function PluginPage({ params }: { params: { slug: string } }) {
-  const plugin = getPluginBySlug(params.slug);
+export default async function PluginPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const plugin = getPluginBySlug(slug);
 
   if (!plugin) {
     notFound();
