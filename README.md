@@ -1,4 +1,3 @@
-md id="6f2n3x"
 # 🌐 JWPlaceholderAPI Web
 
 <div align="center">
@@ -68,9 +67,9 @@ content/plugins/myplugin.md
 
 ```md
 ---
-title: MyPlugin
+name: MyPlugin
+author: YourName
 description: Awesome plugin with JWPlaceholderAPI support
-website: https://github.com/yourname/myplugin
 ---
 ```
 
@@ -81,30 +80,19 @@ website: https://github.com/yourname/myplugin
 Example:
 
 ````md
-# MyPlugin
+### Supported Placeholders
 
-## ✨ Description
-
-MyPlugin adds awesome features to your server.
-
-## 📦 Supported Placeholders
-
-```txt
-%myplugin_rank%
-%myplugin_points%
-```
-
-## 📝 Placeholder Explanation
+Below is a list of placeholders provided by MyPlugin:
 
 | Placeholder | Description |
 |---|---|
 | `%myplugin_rank%` | Returns player's rank |
 | `%myplugin_points%` | Returns player's points |
 
-## 🔗 Links
+### Links
 
 - GitHub: https://github.com/yourname/myplugin
-`````
+````
 
 ---
 
@@ -168,5 +156,3 @@ This project is licensed under the MIT License.
 * 🌐 Website: [https://jw-placeholder-api-page.vercel.app/](https://jw-placeholder-api-page.vercel.app/)
 * 📦 JWPlaceholderAPI: [https://github.com/junggamyeon/JWPlaceholderAPI](https://github.com/junggamyeon/JWPlaceholderAPI)
 * 💻 Repository: [https://github.com/junggamyeon/JWPlaceholderAPI-Page](https://github.com/junggamyeon/JWPlaceholderAPI-Page)
-
-```
