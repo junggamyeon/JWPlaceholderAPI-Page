@@ -1,14 +1,18 @@
 <div align="center">
-# 🌐 JWPlaceholderAPI Web
-    
-### Official plugin directory for JWPlaceholderAPI
 
+<h1>🌐 JWPlaceholderAPI Web</h1>
+
+<h3>Official plugin directory for JWPlaceholderAPI</h3>
+
+<p>
 Browse plugins, placeholders, integrations, and developer resources for the Endstone ecosystem.
+</p>
 
+<p>
 🔗 https://jw-placeholder-api-page.vercel.app/
+</p>
 
 </div>
-
 ---
 
 # ✨ About
