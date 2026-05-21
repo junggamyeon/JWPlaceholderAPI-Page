@@ -1,6 +1,7 @@
 import { getPluginBySlug, getAllPlugins } from "@/lib/plugins";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { ChevronLeft, User, Package } from "lucide-react";
 
@@ -44,11 +45,11 @@ export default async function PluginPage({ params }: { params: Promise<{ slug: s
       <div className="bg-[#0a0f1a] border border-[#1e293b] rounded-2xl p-8">
         <article className="prose prose-invert prose-blue max-w-none 
           prose-headings:border-b prose-headings:border-[#1e293b] prose-headings:pb-2
-          prose-table:border-collapse prose-th:bg-black/50 prose-th:p-4 prose-th:border prose-th:border-[#1e293b] prose-th:text-left
+          prose-table:border-collapse prose-table:w-full prose-th:bg-black/50 prose-th:p-4 prose-th:border prose-th:border-[#1e293b] prose-th:text-left
           prose-td:p-4 prose-td:border prose-td:border-[#1e293b]
           prose-code:text-[#60a5fa] prose-code:bg-[#3b82f6]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
         ">
-          <ReactMarkdown>{plugin.content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{plugin.content}</ReactMarkdown>
         </article>
       </div>
     </div>
