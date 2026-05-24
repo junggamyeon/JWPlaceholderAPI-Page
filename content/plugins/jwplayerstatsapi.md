@@ -1,0 +1,57 @@
+---
+name: JWPlayerStatsAPI
+author: JWDev
+description: Comprehensive player statistics tracking API for EndstoneMC servers.
+---
+
+- `%jwstats_kills%`
+- `%jwstats_deaths%`
+- `%jwstats_highest_killstreak%`
+- `%jwstats_current_killstreak%`
+- `%jwstats_damage_dealt%`
+- `%jwstats_damage_taken%`
+- `%jwstats_critical_hits%`
+- `%jwstats_sword_uses%`
+- `%jwstats_bow_shots%`
+- `%jwstats_trident_throws%`
+- `%jwstats_arrow_hits%`
+- `%jwstats_arrow_misses%`
+- `%jwstats_totem_uses%`
+- `%jwstats_mob_kills%`
+- `%jwstats_animals_killed%`
+- `%jwstats_crops_harvested%`
+- `%jwstats_seeds_planted%`
+- `%jwstats_fish_caught%`
+- `%jwstats_animals_bred%`
+- `%jwstats_blocks_broken%`
+- `%jwstats_blocks_placed%`
+- `%jwstats_pickaxe_uses%`
+- `%jwstats_shovel_uses%`
+- `%jwstats_axe_uses%`
+- `%jwstats_crafted_items%`
+- `%jwstats_smelted_items%`
+- `%jwstats_enchanted_items%`
+- `%jwstats_chest_opened%`
+- `%jwstats_barrel_opened%`
+- `%jwstats_shulker_opened%`
+- `%jwstats_money_earned%`
+- `%jwstats_money_spent%`
+- `%jwstats_highest_balance%`
+- `%jwstats_richest_streak%`
+- `%jwstats_distance_walked%`
+- `%jwstats_distance_sprinted%`
+- `%jwstats_distance_swum%`
+- `%jwstats_distance_elytra%`
+- `%jwstats_distance_horse%`
+- `%jwstats_distance_boat%`
+- `%jwstats_distance_nether%`
+- `%jwstats_chunks_discovered%`
+- `%jwstats_structures_discovered%`
+- `%jwstats_time_played%`
+- `%jwstats_afk_time%`
+- `%jwstats_money_earned_<currency>%`
+- `%jwstats_money_spent_<currency>%`
+- `%jwstats_highest_balance_<currency>%`
+- `%jwstats_mob_kill_<entity_type>%`
+- `%jwstats_block_break_<block_type>%`
+- `%jwstats_block_place_<block_type>%`
