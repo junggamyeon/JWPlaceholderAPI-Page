@@ -1,162 +1,181 @@
 <div align="center">
 
-<h1>🌐 JWPlaceholderAPI Web</h1>
+# JWPlaceholderAPI Web
 
-<h3>Official plugin directory for JWPlaceholderAPI</h3>
+The official plugin directory and documentation site for [JWPlaceholderAPI](https://github.com/junggamyeon/JWPlaceholderAPI).
 
-<p>
-Browse plugins, placeholders, integrations, and developer resources for the Endstone ecosystem.
-</p>
+Browse plugins, explore placeholders, and integrate with the Endstone ecosystem.
 
-<p>
-🔗 https://jw-placeholder-api-page.vercel.app/
-</p>
+[Live Site](https://jw-placeholder-page.vercel.app//) · [JWPlaceholderAPI](https://github.com/junggamyeon/JWPlaceholderAPI)
 
 </div>
 
 ---
 
-# ✨ About
+## Tech Stack
 
-**JWPlaceholderAPI Web** is the official website repository for listing plugins that support **JWPlaceholderAPI**.
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| Components | shadcn/ui (Radix UI) |
+| Icons | Lucide React |
+| Content | Markdown + gray-matter |
+| Syntax Highlighting | Shiki (github-dark) |
+| Typography | @tailwindcss/typography |
+| Deployment | Vercel |
 
-This project helps:
-- 📦 Server owners discover compatible plugins
-- 🛠️ Developers showcase integrations
-- 📚 Users explore available placeholders
-- 🔗 The Endstone ecosystem stay connected
+## Features
 
----
+- Documentation-style layout with collapsible nested sidebar
+- Markdown-based plugin pages with rich frontmatter metadata
+- Syntax-highlighted code blocks with copy-to-clipboard
+- Styled tables using shadcn/ui Table components
+- Color badge syntax for visual status indicators
+- Callout blocks (info, warning, danger, tip)
+- Anchor links on headings for deep linking
+- Client-side search/filter by name, author, or description
+- Responsive design with mobile drawer navigation
+- Static site generation for all pages
 
-# 🚀 Features
+## Getting Started
 
-- Modern plugin listing UI
-- Markdown-based plugin pages
-- Placeholder documentation
-- Developer-friendly structure
-- Easy contribution workflow
-- Vercel deployment support
+### Prerequisites
 
----
+- Node.js 18+
+- npm
 
-# 📂 Project Structure
-
-```txt
-content/
-└── plugins/
-    ├── jweconomy.md
-    ├── jwmarket.md
-    └── yourplugin.md
-```
-
-Each markdown file represents one plugin page on the website.
-
----
-
-# 📝 Adding Your Plugin
-
-To add your plugin:
-
-## 1. Create a markdown file
-
-Example:
-
-```txt
-content/plugins/myplugin.md
-```
-
----
-
-## 2. Add frontmatter
-
-```md
----
-name: MyPlugin
-author: YourName
-description: Awesome plugin with JWPlaceholderAPI support
----
-```
-
----
-
-## 3. Write your plugin page
-
-Example:
-
-````md
-### Supported Placeholders
-
-Below is a list of placeholders provided by MyPlugin:
-
-| Placeholder | Description |
-|---|---|
-| `%myplugin_rank%` | Returns player's rank |
-| `%myplugin_points%` | Returns player's points |
-
-### Links
-
-- GitHub: https://github.com/yourname/myplugin
-````
-
----
-
-# 💡 Plugin Page Tips
-
-A good plugin page should:
-
-* Clearly explain what the plugin does
-* Show all supported placeholders
-* Include examples
-* Use tables for readability
-* Include screenshots if possible
-* Link to GitHub or documentation
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-
-You can contribute by:
-
-* Adding plugin pages
-* Improving documentation
-* Fixing typos
-* Enhancing website UI
-* Adding examples
-
----
-
-# 🛠️ Development
-
-## Install dependencies
+### Installation
 
 ```bash
+git clone https://github.com/junggamyeon/JWPlaceholderAPI-Page.git
+cd JWPlaceholderAPI-Page
 npm install
 ```
 
-## Start development server
+### Development
 
 ```bash
 npm run dev
 ```
 
-## Build project
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build
 
 ```bash
 npm run build
 ```
 
+### Start (Production)
+
+```bash
+npm run start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+content/plugins/          Plugin documentation (Markdown)
+src/
+├── app/
+│   ├── layout.tsx        Root layout (sidebar, header, shell)
+│   ├── page.tsx          Homepage (plugin listing + search)
+│   ├── docs/
+│   │   └── writing-plugins/
+│   │       └── page.tsx  Writing guide page
+│   └── plugins/
+│       └── [slug]/
+│           └── page.tsx  Plugin detail page
+├── components/
+│   ├── header.tsx        Top navigation with social links
+│   ├── sidebar.tsx       Nested sidebar navigation
+│   ├── copy-button.tsx   Clipboard copy button
+│   ├── markdown-content.tsx  Markdown renderer (tables, code, callouts)
+│   ├── PluginSearch.tsx  Client-side search + plugin cards
+│   └── ui/              shadcn/ui primitives
+├── hooks/
+│   └── use-mobile.ts    Responsive breakpoint hook
+└── lib/
+    ├── plugins.ts       Content loader (getAllPlugins, getPluginBySlug)
+    └── utils.ts         cn() utility
+```
+
+## Adding a Plugin
+
+Create a Markdown file in `content/plugins/`:
+
+```yaml
 ---
-
-# 📄 License
-
-This project is licensed under the MIT License.
-
+name: YourPlugin
+author: YourName
+description: Short description of your plugin.
+version: 1.0.0
+updated: 2025-06-01
+placeholders: 12
 ---
+```
 
-# 🔗 Links
+Then write your documentation using supported Markdown features:
 
-* 🌐 Website: [https://jw-placeholder-api-page.vercel.app/](https://jw-placeholder-api-page.vercel.app/)
-* 📦 JWPlaceholderAPI: [https://github.com/junggamyeon/JWPlaceholderAPI](https://github.com/junggamyeon/JWPlaceholderAPI)
-* 💻 Repository: [https://github.com/junggamyeon/JWPlaceholderAPI-Page](https://github.com/junggamyeon/JWPlaceholderAPI-Page)
+- **Tables** — rendered as styled shadcn components
+- **Code blocks** — syntax highlighted with copy button
+- **Color badges** — `` `{green} Active` `` renders as colored badge
+- **Callouts** — `:::info`, `:::warning`, `:::danger`, `:::tip`
+- **Anchor links** — auto-generated on all headings
+
+See the full [Writing Plugins Guide](https://jw-placeholder-api-page.vercel.app/docs/writing-plugins) for details.
+
+## Markdown Features
+
+### Color Badges
+
+```markdown
+`{green} Active`
+`{red} Deprecated`
+`{yellow} Beta`
+`{blue} Dynamic`
+```
+
+### Callout Blocks
+
+```markdown
+:::info
+This is an informational note.
+:::
+
+:::warning
+This requires special attention.
+:::
+```
+
+### Code Blocks
+
+All fenced code blocks with a language tag get syntax highlighting and a copy button on hover.
+
+## Contributing
+
+Contributions are welcome. You can contribute by:
+
+- Adding plugin documentation pages
+- Improving the site UI/UX
+- Fixing bugs or typos
+- Enhancing the Markdown renderer
+
+## License
+
+MIT
+
+## Links
+
+- **Website:** https://jw-placeholder-api-page.vercel.app/
+- **JWPlaceholderAPI:** https://github.com/junggamyeon/JWPlaceholderAPI
+- **Discord:** https://discord.gg/junggamyeon
+- **Repository:** https://github.com/junggamyeon/JWPlaceholderAPI-Page

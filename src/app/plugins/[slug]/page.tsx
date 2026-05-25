@@ -1,9 +1,9 @@
 import { getPluginBySlug, getAllPlugins } from "@/lib/plugins";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import Link from "next/link";
-import { ChevronLeft, User, Package } from "lucide-react";
+import { ChevronLeft, User, Package, Tag, Calendar, Hash } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { MarkdownContent } from "@/components/markdown-content";
 
 export async function generateStaticParams() {
   const plugins = getAllPlugins();
@@ -12,7 +12,25 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PluginPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const plugin = getPluginBySlug(slug);
+  if (!plugin) return {};
+  return {
+    title: `${plugin.name} | JWPlaceholderAPI`,
+    description: plugin.description,
+  };
+}
+
+export default async function PluginPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const plugin = getPluginBySlug(slug);
 
@@ -21,36 +39,57 @@ export default async function PluginPage({ params }: { params: Promise<{ slug: s
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-8">
-      {/* Breadcrumb */}
-      <Link href="/" className="inline-flex items-center text-[#94a3b8] hover:text-[#3b82f6] text-sm font-medium mb-8 transition-colors">
-        <ChevronLeft size={16} className="mr-1" /> Back to Plugins
+    <div className="mx-auto max-w-4xl">
+      <Link
+        href="/"
+        className="animate-fade-in mb-6 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ChevronLeft className="mr-1 h-4 w-4" />
+        Back to Plugins
       </Link>
 
-      {/* Header */}
-      <div className="bg-[#0a0f1a] border border-[#1e293b] rounded-2xl p-8 mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 opacity-5">
-          <Package size={120} />
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 relative z-10">{plugin.name}</h1>
-        <p className="text-lg text-[#94a3b8] mb-6 relative z-10 max-w-2xl">{plugin.description}</p>
-        
-        <div className="flex items-center gap-2 text-sm text-gray-300 bg-black/50 w-fit px-4 py-2 rounded-lg border border-[#1e293b] relative z-10">
-          <User size={16} className="text-[#3b82f6]" />
-          <span>Author: <strong>{plugin.author}</strong></span>
+      <div className="animate-slide-up mb-8 rounded-lg border bg-card p-6">
+        <div className="flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">
+            <Package className="h-6 w-6 text-blue-500" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-2xl font-bold tracking-tight">
+              {plugin.name}
+            </h1>
+            <p className="mt-1 text-muted-foreground">{plugin.description}</p>
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <User className="h-4 w-4" />
+                <span className="font-medium text-foreground">{plugin.author}</span>
+              </span>
+              {plugin.version && (
+                <span className="flex items-center gap-1.5">
+                  <Tag className="h-4 w-4" />
+                  <span>v{plugin.version}</span>
+                </span>
+              )}
+              {plugin.updated && (
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="h-4 w-4" />
+                  <span>{plugin.updated}</span>
+                </span>
+              )}
+              {plugin.placeholders && (
+                <span className="flex items-center gap-1.5">
+                  <Hash className="h-4 w-4" />
+                  <span>{plugin.placeholders} placeholders</span>
+                </span>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Markdown Content */}
-      <div className="bg-[#0a0f1a] border border-[#1e293b] rounded-2xl p-8">
-        <article className="prose prose-invert prose-blue max-w-none 
-          prose-headings:border-b prose-headings:border-[#1e293b] prose-headings:pb-2
-          prose-table:border-collapse prose-table:w-full prose-th:bg-black/50 prose-th:p-4 prose-th:border prose-th:border-[#1e293b] prose-th:text-left
-          prose-td:p-4 prose-td:border prose-td:border-[#1e293b]
-          prose-code:text-[#60a5fa] prose-code:bg-[#3b82f6]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
-        ">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{plugin.content}</ReactMarkdown>
-        </article>
+      <Separator className="mb-8" />
+
+      <div className="animate-slide-up animate-delay-200">
+        <MarkdownContent content={plugin.content} />
       </div>
     </div>
   );
