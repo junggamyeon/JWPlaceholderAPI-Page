@@ -7,6 +7,9 @@ export interface PluginData {
   name: string;
   author: string;
   description: string;
+  version?: string;
+  updated?: string;
+  placeholders?: number;
   content: string;
 }
 
@@ -33,6 +36,9 @@ export function getAllPlugins(): PluginData[] {
         name: matterResult.data.name || slug,
         author: matterResult.data.author || 'Unknown',
         description: matterResult.data.description || '',
+        version: matterResult.data.version || undefined,
+        updated: matterResult.data.updated || undefined,
+        placeholders: matterResult.data.placeholders || undefined,
         content: matterResult.content,
       };
     });
